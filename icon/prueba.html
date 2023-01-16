@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Demo styles -->
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+  </head>
+<style type="text/css">
+        .box-portfolio{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-gap: 2.5rem;
+    align-items: start;
+    padding: 0 0 100px 0;
+}
+
+.box-portfolio .box{
+    padding: 0 0 3rem;
+    background: #ffffff;
+    outline: var(--outline);
+    outline-offset: -1rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    justify-content: center;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.box-portfolio .box:hover{
+    outline: var(--outline-hover);
+    outline-offset: 0rem;
+}
+
+.title{
+    text-align: center;
+    justify-content: center;
+    padding: 1rem 1rem 1rem 1rem;
+    font-size: 37px;
+}
+
+.box-portfolio .box a{
+    margin-top: 0;
+    padding: 0 0 0 0;
+}
+
+.box-portfolio .box a img{
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align: center;
+    transition: all 0.5s;
+    object-fit: cover;
+}
+
+.box-portfolio .box a img:hover{
+    opacity: .4;
+    cursor: pointer;
+}
+
+.box-portfolio .box .box-hover h3{
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: var(--black);
+}
+
+.box-portfolio .box p{
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--light-color);
+    padding: 1rem 0;
+}
+
+.box-portfolio .box .box-hover{
+    position: absolute;
+    bottom: 0;
+    padding: 20px 0 20px 0;
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+    width: 100%;
+    transform: translateY(100%);
+    transition: all 0.5s ease-out;
+    Opacity: 0;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-portfolio .box:hover .box-hover{
+    transform: translateY(0%);
+    Opacity: 1;
+}
+
+.box-portfolio .box .box-hover h3{
+    text-align: center;
+    padding: 0 20px 0 20px;
+}
+
+.box-portfolio .box:hover .img-hover{
+    transform: scale(1.15);
+}
+
+/*--- BOTÓN MODAL 1 ---*/
+
+.box-hover label{
+    transition: all 300ms ease;
+}
+
+.search-icon{
+    width: 20px;
+    fill: currentColor !important;
+    filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(216deg) brightness(108%) contrast(104%);
+}
+
+.search-icon:hover{
+    filter: invert(53%) sepia(92%) saturate(2796%) hue-rotate(152deg) brightness(98%) contrast(101%);
+    cursor: pointer;
+}
+
+#btn-modal{
+    display: none;
+}
+
+.container-modal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    padding: 100px 0 130px 0;
+    background-color: rgba(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#btn-modal:checked ~ .container-modal{
+    display: flex;
+    transition: all 500ms ease;
+}
+
+.content-modal{
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    position: relative;
+    heigh: 100vh;
+}
+
+.content-modal .imagen{
+    width: 100%;
+    padding: 20px;
+}
+
+.content-modal .btn-cerrar{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content-modal .btn-cerrar label{
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 3px 10px;
+}
+
+.content-modal .btn-cerrar label:hover{
+    background: #00b3cd;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.cerrar-modal{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+@media screen and (max-width: 480px) {
+    .content-modal{
+    width: 90%;
+    padding: 120px 0 180px 0;
+    }
+
+    .content-modal .btn-cerrar label{
+        top: 145px;
+        padding: 3px 10px;
+    }
+
+    .content-modal .imagen{
+        width: 100%;
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 858px) and (orientation: landscape) {
+    .content-modal{
+    width: 60%;
+    padding: 0 0 0 0;
+    margin-top: -30px;
+    }
+
+    .content-modal .imagen{
+        padding: 0;
+        margin-top: -80px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .content-modal{
+    width: 100%;
+    max-width: 900px;
+    }
+
+    .container-modal{
+    padding: 100px 0 360px 0;
+    }
+}
+
+/*--- BOTÓN MODAL 2 ---*/
+
+.box-hover label{
+    transition: all 300ms ease;
+}
+
+.search-icon-2{
+    width: 20px;
+    fill: currentColor !important;
+    filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(216deg) brightness(108%) contrast(104%);
+}
+
+.search-icon-2:hover{
+    filter: invert(53%) sepia(92%) saturate(2796%) hue-rotate(152deg) brightness(98%) contrast(101%);
+    cursor: pointer;
+}
+
+#btn-modal-2{
+    display: none;
+}
+
+.container-modal-2{
+    width: 100%;
+    heigh: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    padding: 100px 0 130px 0;
+    background-color: rgba(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#btn-modal-2:checked ~ .container-modal-2{
+    display: flex;
+    transition: all 500ms ease;
+}
+
+.content-modal-2{
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    position: relative;
+    heigh: 100vh;
+}
+
+.content-modal-2 .imagen{
+    width: 100%;
+    padding: 20px;
+}
+
+.content-modal-2 .btn-cerrar-2{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content-modal-2 .btn-cerrar-2 label{
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 3px 10px;
+}
+
+.content-modal-2 .btn-cerrar-2 label:hover{
+    background: #00b3cd;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.cerrar-modal-2{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+@media screen and (max-width: 480px) {
+    .content-modal-2{
+    width: 90%;
+    padding: 120px 0 180px 0;
+    }
+
+    .content-modal-2 .btn-cerrar label{
+        top: 145px;
+        padding: 3px 10px;
+    }
+
+    .content-modal-2 .imagen{
+        width: 100%;
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 858px) and (orientation: landscape) {
+    .content-modal-2{
+    width: 60%;
+    padding: 0 0 0 0;
+    margin-top: -30px;
+    }
+
+    .content-modal-2 .imagen{
+        padding: 0;
+        margin-top: -80px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .content-modal-2{
+    width: 100%;
+    max-width: 900px;
+    }
+
+    .container-modal-2{
+    padding: 100px 0 360px 0;
+    }
+}
+
+/*--- BOTÓN MODAL 3 ---*/
+
+.box-hover label{
+    transition: all 300ms ease;
+}
+
+.search-icon-3{
+    width: 20px;
+    fill: currentColor !important;
+    filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(216deg) brightness(108%) contrast(104%);
+}
+
+.search-icon-3:hover{
+    filter: invert(53%) sepia(92%) saturate(2796%) hue-rotate(152deg) brightness(98%) contrast(101%);
+    cursor: pointer;
+}
+
+#btn-modal-3{
+    display: none;
+}
+
+.container-modal-3{
+    width: 100%;
+    heigh: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    padding: 100px 0 130px 0;
+    background-color: rgba(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#btn-modal-3:checked ~ .container-modal-3{
+    display: flex;
+    transition: all 500ms ease;
+}
+
+.content-modal-3{
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    position: relative;
+    heigh: 100vh;
+}
+
+.content-modal-3 .imagen{
+    width: 100%;
+    padding: 20px;
+}
+
+.content-modal-3 .btn-cerrar-3{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content-modal-3 .btn-cerrar-3 label{
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 3px 10px;
+}
+
+.content-modal-3 .btn-cerrar-3 label:hover{
+    background: #00b3cd;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.cerrar-modal-3{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+@media screen and (max-width: 480px) {
+    .content-modal-3{
+    width: 90%;
+    padding: 120px 0 180px 0;
+    }
+
+    .content-modal-3 .btn-cerrar label{
+        top: 145px;
+        padding: 3px 10px;
+    }
+
+    .content-modal-3 .imagen{
+        width: 100%;
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 858px) and (orientation: landscape) {
+    .content-modal-3{
+    width: 60%;
+    padding: 0 0 0 0;
+    margin-top: -30px;
+    }
+
+    .content-modal-3 .imagen{
+        padding: 0;
+        margin-top: -80px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .content-modal-3{
+    width: 100%;
+    max-width: 900px;
+    }
+
+    .container-modal-3{
+    padding: 100px 0 360px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content-modal-7{
+    width: 90%;
+    padding: 120px 0 180px 0;
+    }
+
+    .content-modal-7 .btn-cerrar label{
+        top: 145px;
+        padding: 3px 10px;
+    }
+
+    .content-modal-7 .imagen{
+        width: 100%;
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 858px) and (orientation: landscape) {
+    .content-modal-7{
+    width: 60%;
+    padding: 0 0 0 0;
+    margin-top: -30px;
+    }
+
+    .content-modal-7 .imagen{
+        padding: 0;
+        margin-top: -80px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .content-modal-7{
+    width: 100%;
+    max-width: 900px;
+    }
+
+    .container-modal-7{
+    padding: 100px 0 360px 0;
+    }
+}
+
+/*--- WHATSAPP ---*/
+
+.btn-wsp{
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	bottom: 30px;
+	right: 30px;
+	background: #0df053;
+	color: #ffffff;
+	border-radius: 50px;
+	text-align: center;
+	font-size: 40px;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+	z-index: 100;
+}
+
+.btn-wsp:hover{
+	text-decoration: none;
+	color: #0df053;
+	background: #ffffff;
+}
+</style>
+  </head>
+
+  <body>
+
+    <section>
+        <a class="btn-wsp" target="_blank" href="https://api.whatsapp.com/send?phone=573212464395&amp;text=Buen%20d%C3%ADa%20Señores%20MAGNOPRO%20solicito%20más%20información%20del%20servicio" rel="noopener"><i class="fa fa-whatsapp"></i></a>
+        <div class="title">
+            <h2 data-aos="zoom-in"><span class="color-different"><i>Portafolio</i></span></h2>
+        </div>
+        <div class="box-portfolio">
+          <div class="box" data-aos="fade-down" data-aos-duration="3000">
+              <a href="https://www.magnopro.com.co/portafolio/sonorizacion/"><img decoding="async" class="img-hover" src="https://www.magnopro.com.co/wp-content/uploads/2018/10/b-copia-4.jpg" alt=""></a>
+              <div class="box-hover">
+                <h3>Sonorización</h3>
+                <label for="btn-modal-3"><img decoding="async" class="search-icon-3" src="https://www.magnopro.com.co/wp-content/uploads/2022/11/magnifying-glass-solid.svg"></label>
+              </div>
+          </div>
+          <div class="box" data-aos="fade-down" data-aos-duration="3000">
+              <a href="https://www.magnopro.com.co/portafolio/automatizacion-y-control/"><img decoding="async" class="img-hover" src="https://www.magnopro.com.co/wp-content/uploads/2018/10/c-copia.jpg" alt=""></a>
+              <div class="box-hover">
+                <h3>Automatización y control</h3>
+                <label for="btn-modal-2"><img decoding="async" class="search-icon-2" src="https://www.magnopro.com.co/wp-content/uploads/2022/11/magnifying-glass-solid.svg"></label>
+              </div>
+          </div>
+          <div class="box" data-aos="fade-down" data-aos-duration="3000">
+              <a href="https://www.magnopro.com.co/portafolio/asesoria-profesional-y-personalizada/"><img decoding="async" class="img-hover" src="https://www.magnopro.com.co/wp-content/uploads/2018/10/a-copia.jpg" alt=""></a>
+              <div class="box-hover">
+                <h3>Asesoría profesional<br />y personalizada</h3>
+                <label for="btn-modal"><img decoding="async" class="search-icon" src="https://www.magnopro.com.co/wp-content/uploads/2022/11/magnifying-glass-solid.svg"></label>
+              </div>
+            </div>
+        </div>
+    </section>
+<section>
+    <input type="checkbox" id="btn-modal"></input>
+    <div class="container-modal">
+        <div class="content-modal">
+            <img decoding="async" class="imagen img1" src="https://www.magnopro.com.co/wp-content/uploads/2018/10/a-copia.jpg" alt="">      
+             <div class="btn-cerrar">
+                  <label for="btn-modal">x</label>
+             </div>
+        </div>
+        <label for="btn-modal" class="cerrar-modal"></label>
+    </div>
+</section>
+<section>
+    <input type="checkbox" id="btn-modal-2"></input>
+    <div class="container-modal-2">
+        <div class="content-modal-2">
+            <img decoding="async" class="imagen img2" src="https://www.magnopro.com.co/wp-content/uploads/2018/10/c-copia.jpg" alt="">      
+             <div class="btn-cerrar-2">
+                  <label for="btn-modal-2">x</label>
+             </div>
+        </div>
+        <label for="btn-modal-2" class="cerrar-modal-2"></label>
+    </div>
+</section>
+<section>
+    <input type="checkbox" id="btn-modal-3"></input>
+    <div class="container-modal-3">
+        <div class="content-modal-3">
+            <img decoding="async" class="imagen img3" src="https://www.magnopro.com.co/wp-content/uploads/2018/10/b-copia-4.jpg" alt="">      
+             <div class="btn-cerrar-3">
+                  <label for="btn-modal-3">x</label>
+             </div>
+        </div>
+        <label for="btn-modal-3" class="cerrar-modal-3"></label>
+    </div>
+</section>
+  </body>
+</html>
