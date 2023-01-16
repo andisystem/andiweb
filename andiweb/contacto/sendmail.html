@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+
+    <!-- Link for geting slider of header -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Link for geting icons with fontawesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <!-- Title Website -->
+
+    <title>Portafolio | AndiWeb</title>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+</head>
+<body>
+
+    <!-- Header Main Navigation -->
+
+    <header>
+        <div class="header">
+            <div class="navbar">
+                <div class="container-logo">
+                    <a href="../" class="logo">AndiWeb</a>
+                </div>
+                <div class="navbar-menu">
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="../">Inicio</a></li>
+                            <li><a href="../portafolio">Portafolio</a></li>
+                            <li><a href="../sobre-mi">Acerca de mi</a></li>
+                            <li class="selected-li"><a href="../contacto">Contacto</a></li>
+                        </ul>
+                    </nav>
+                    <div class="main-icons">
+                        <button class="dark-mode" id="switch">
+                            <span><img src="../icon/moon-solid.svg" class="moon-icon"></span>
+                            <span><img src="../icon/sun-solid.svg" class="sun-icon"></span>
+                        </button>
+                        <span  class="btn-search" id="btn-search">
+                            <img src="../icon/magnifying-glass-solid.svg" class="search-icon" id="search-icon">
+                        </span>
+                        <input type="checkbox" id="side-menu" class="side-menu" />
+                <label for="side-menu" class="hamb" id="hamb">
+                    <img src="../icon/bars-solid.svg" class="menu-icon" id="menu-icon" onclick="menutoggle()">
+                    <img src="../icon/xmark-solid.svg" class="menu-icon-x" id="menu-icon-x" onclick="menutoggle()">
+                </label>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </header>
+
+    <!---- Searcher ---->
+
+    <div id="ctn-bars-search">
+        <input type="text" id="inputSearch" placeholder="¿Qué deseas buscar?">
+    </div>
+
+    <ul id="box-search">
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>WordPress</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Drupal</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Moodle</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Web Corporativa</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Web Informativa</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Comercio Electrónico</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Tienda Virtual</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>E commerce</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>E-commerce</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Página Web UX/UI</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Sitio Web UX/UI</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Tienda Online</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Plataforma LMS</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Plataforma E learning</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Plataforma CMS</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Open Source</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Software Open Source</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Gamificación</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Almacenamiento en la Nube</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>CRM</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Diseño Web</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Desarrollo Web</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Web Responsive</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Juegos</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>Landing Page</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>CROD</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>HTML</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>HTML y CSS</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>JavaScript</a></li>
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i>PHP</a></li>
+    </ul>
+
+    <div id="cover-ctn-search"></div>
+
+    <!-- Contact Webform -->
+
+    <section class="section-form">
+        <p><iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitUserForm){
+            window.location='../contacto/sendmail.html';}" style="display: none"></iframe></p>
+        <div id="formUser">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSdFZuuE8RUB3Ovu_qBi8fB7BY__Zciv3yTA2puT6OfwToeihg/formResponse" method="POST" class="form" id="form" onsubmit="return submitUserForm();" target="hidden_iframe">
+                <h1 class="title-contact">Déjame tus datos aquí</h1>
+                <div class="container-form">
+                    <div class="input-container">
+                        <i class="fa-solid fa-user icon"></i><span>|</span>
+                        <input class="input-form" type="text" aria-required="true" required="required" name="entry.1689656436" id="entry.1689656436" placeholder="Nombre">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-user icon"></i><span>|</span>
+                        <input class="input-form" type="tel" aria-required="true" required="required" name="entry.1080102694" id="entry.1080102694" placeholder="Teléfono">
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-envelope icon"></i><span>|</span>
+                        <input class="input-form" type="text" aria-required="true" required="required" name="entry.1991660401" id="entry.1991660401" placeholder="Correo electrónico">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-location-dot icon"></i><span>|</span>
+                        <input class="input-form" type="text" aria-required="true" required="required" name="entry.1735674882" id="entry.1735674882" placeholder="País">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-city icon"></i><span>|</span>
+                        <input class="input-form" type="text" aria-required="true" required="required" name="entry.764054735" id="entry.764054735" placeholder="Ciudad">
+                    </div>
+                    <div class="input-container">
+                        <textarea class="input-form textarea" name="entry.1902784077" id="entry.1902784077" cols="30" rows="10" placeholder="Tu mensaje"></textarea>
+                    </div>
+                    <input type="submit" value="Enviar" name="submit" id="submit" class="button" onclick="SendFormGoogleSheets()">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- footer -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <p>Tengo como misión y objetivo ayudar a emprendedores, pequeñas y grandes empresas a diseñar y desarrollar su proyecto de acuerdo a sus objetivos y encontrar soluciones eficientes para su negocio.</p>
+                    <div class="button-contact">
+                        <div><p>Déjame sus datos y estaré en contacto para responder sus inquietudes o su solicitud.</p></div>
+                        <div><a href="../contacto" class="btn-footer">Contáctame</a></div>
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <a href="../"><img src="https://anfelirod.com/wp-content/uploads/2019/11/andres-rodriguez.png" alt=""></a>
+                    <p>Diseño y desarrollo web a su medida.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h4>Sitios de interés</h4>
+                    <ul>
+                        <li><a href="../portafolio">Portafolio</a></li>
+                        <li><a href="../blog">Blog</a></li>
+                        <li><a href="../sobre-mi">Acerca de mi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <div class="social-icons-container">
+                        <a target="_blank" href="https://web.facebook.com/people/Andr%C3%A9s-Rodr%C3%ADguez/100008156191939/" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/artworldartistico/" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-instagram"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/andr%C3%A9s-felipe-rodr%C3%ADguez-barbosa-53b4a915a/" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a target="_blank" href="https://www.behance.net/anfelirod8b973" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2022 - AndiWeb</p>
+        </div>
+    </footer>
+
+    <!---- Script ---->
+    <!-- Script for geting slider of header -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!------ category librery for filter ------>
+    
+    <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+
+    <!------ Modal Swal Sweet Alert ------>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!------chat------>
+
+    <script src="//code.tidio.co/idtrz8rkboky0jxuntgr59riqh9jyndx.js" async></script>
+
+    <!------ Conecting to JavaScript ------>
+
+    <script src="../script.js"></script>
+
+    <!------ Succes Alert ------>
+
+    <script type="text/javascript">
+        swal('Mensaje enviado','Sus datos han sido enviados exitosamente','success');
+    </script>
+</body>
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select class="form-control category" id="category" name="category" onchange="selectCategory();" type="select" style="height: 42px; font-family: 'avenir_lt_std45_book';">
+        <option value="Todos" id="todos">Todos</option>
+        <option value="Asesoría" id="asesoria">Asesoría</option>
+        <option value="Arte y Cultura" id="arteYCultura">Arte y Cultura</option>
+        <option value="Exportación e Importación" id="expImp">Exportación e Importación</option>
+        <option value="Medios Creativos" id="mediosCreativos">Medios Creativos</option>
+        <option value="Tecnología" id="tecnologia">Tecnología</option>
+    </select>
+    <section class="gallery-portfolio">
+        <form action="">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="searcher-input" id="searcher-input" placeholder="Buscar">
+        </form>
+        <div class="category" id="category">
+            <a href="#" class="active">Todos</a>
+            <a href="#">Asesoría</a>
+            <a href="#">Arte y Cultura</a>
+            <a href="#">Exportación e Importación</a>
+            <a href="#">Medios Creativos</a>
+            <a href="#">Tecnología</a>
+        </div>
+        <div class="grid" id="grid">
+            <div class="item"
+                 data-category="asesoría"
+                 data-label="precios pricing institute pricing.institute marketing segmentacion segmentación asesoria asesoría financiera finanzas estrategias"
+                 data-industry="Asesoría"
+                 data-country="Chile"
+                 data-type="Web informativa, E commerce"
+                 data-description="Este es un sitio web sobre estrategias de precios que se encuentra situado en la ciudad de Santiago Chile y cuyo objetivo es ayudar a los emprendedores, empresarios y ejecutivos a definir sus precios desde una mirada de valor."
+                 data-src="https://pricing.institute/">
+                <div class="item-content">
+                    <img decoding="async" class="img-hover" src="../images/pricing-institute.png" alt="">
+                    <div class="box-hover">
+                        <h3 class="title-link" onclick="click()">Pricing Institute</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item"
+                 data-category="tecnología"
+                 data-label="tecnologia tecnología mioficina mioficina.co mi oficina mi oficina.co cloud computing nube privada seguridad informática informatica sistemas ingenieria ingeniería datacenter centro de datos campanas campañas de seguridad colombia"
+                 data-industry="Tecnología"
+                 data-country="Colombia"
+                 data-type="Web corporativa"
+                 data-description="Este es un sitio web que ofrece soluciones de ingeniería y tecnología de la información y comunicación para las TICs, con el fin de garantizar la seguridad y la continuidad del negocio para las medianas y grandes empresas como también a las grandes organizaciones."
+                 data-src="https://mioficina.co/">
+                 <div class="item-content">
+                    <img decoding="async" class="img-hover" src="../images/mioficina.png" alt="">
+                    <div class="box-hover">
+                        <h3 class="title-link" onclick="click()">Mi Oficina.co</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item"
+                 data-category="arte y cultura"
+                 data-label="arte cultura artwold artístico artistico plásticas plasticas lápices de colores lapices temperas acuarelas plastilina porcelanicrón porcelanicron marcadores artesanias artesanías mundo animales grafitis pesebre pesebres"
+                 data-industry="Arte y cultura"
+                 data-country="Colombia"
+                 data-type="Web comercial"
+                 data-description="Este es un sitio web que he creado desde el 2014, pero lo tengo como referente, ya que fue mi primer sitio web que he creado en la plataforma Wix."
+                 data-src="https://artworldartistico.wixsite.com/artes/">
+                <div class="item-content">
+                    <img decoding="async" class="img-hover" src="../images/artworld.png" alt="">
+                    <div class="box-hover">
+                        <h3 class="title-link" onclick="click()">Artworld Artístico</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item"
+                 data-category="exportación e importación"
+                 data-label="Cargo Visión Colombia transporte importación importacion exportación exportacion transporte empaque especializado bodegas especializadas transporte y carga transporte marítimo transporte maritimo transporte aéreo transporte aereo transporte terrestre negocios de importación negocios de exportación"
+                 data-industry="Exportación e Importación"
+                 data-country="Colombia"
+                 data-type="Web corporativa"
+                 data-description="Este es un sitio web que he creado desde el 2019 unos meses antes de que empezara la pandemia y fue uno de los comienzos por los cuáles empecé a ofrecer mis servicios de diseño web para los emprendedores y empresas."
+                 data-src="https://cargovisioncolombia.com/">
+                <div class="item-content">
+                    <img decoding="async" class="img-hover" src="../images/cargovision-colombia.png" alt="">
+                    <div class="box-hover">
+                        <h3 class="title-link" onclick="click()">Cargo Visión Colombia</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item"
+                 data-category="medios creativos"
+                 data-label="r2 publicidad impresion impresión gran formato impresión serigráfica impresión litográfica diseño de material publicitario diseño para medios impresos backing estructuras publicitarias publicidad offline"
+                 data-industry="Medios Creativos"
+                 data-country="Colombia"
+                 data-type="Web informativa"
+                 data-description="Este es mi primer proyecto de sitio web que empecé a utilizar lenguajes de programación y pronto se va a lanzar este proyecto con una de las empresas que estoy trabajando en Bogotá Colombia"
+                 data-src="https://pruebas.anfelirod.com/r2publicidad/">
+                <div class="item-content">
+                    <img decoding="async" class="img-hover" src="../images/r2publicidad.png" alt="">
+                    <div class="box-hover">
+                        <h3 class="title-link" onclick="click()">R2 Publicidad</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item"
+                 data-category="tecnología"
+                 data-label="mioficina.co mioficina mi oficina mi oficina.co cloud nube privada copias de seguridad sitio alterno de respaldo backup backup corporativo backup online veeam veeam backup and replication landing page evento eventos tecnología tecnologia"
+                 data-industry="Tecnología"
+                 data-country="Colombia"
+                 data-type="Landing page"
+                 data-description="Este es mi primera landing page que empecé a probar con JavaScript para darle los efectos a la página web. El objetivo que tenía la empresa era capturar los datos de las personas que se inscribían al evento mediante un formulario que una vez haya registrado, se envía los datos a la hoja de cálculo de Google sheets y además tuve configurado los mensajes de confirmación y notificación que se les envía al correo electrónico tanto para el que se inscribió como para el que recibe la información, pensando en la funcionalidad que debe tener esta landing page como parte de experiencia de usuario para participar al evento."
+                 data-src="https://mioficina.co/sites/default/files/2022-08/evento-veeam-la-marca-numero-1-en-respaldo-de-datos_2.html">
+                <div class="item-content">
+                    <img decoding="async" class="img-hover" src="../images/landingpage-mioficina.png" alt="">
+                    <div class="box-hover">
+                        <h3 class="title-link" onclick="click()">Mi Oficina.co</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Cards for Portfolio -->
+
+    <!--<script type="text/javaScript">
+        const portfolio = [
+            {
+            id: 1,
+            name: "Mi Oficina.co",
+            description: "Esta es una descripción de la empresa donde trabajaba anteriormente",
+            industry: "Tecnología",
+            country: "Bogotá - Colombia",
+            img: "./images/mioficina.png",
+            },
+            {
+            id: 2,
+            name: "Pricing Institute",
+            description: "Esta es una descripción de la empresa donde estoy trabajando actualmente",
+            industry: "Asesoría",
+            country: "Santiago - Chile",
+            img: "./images/pricing-institute.png",
+            },
+            {
+            id: 3,
+            name: "MagnoPro",
+            description: "Esta es una descripción de la empresa donde estoy trabajando actualmente",
+            industry: "Tecnología",
+            country: "Santiago - Chile",
+            img: "./images/mioficina.png",
+            },
+        ];
+
+        let card = document.getElementById("card-template");
+
+        portfolio.map((x) => {
+            card.innerHTML += `
+            <div class="col">
+                  <div class="card">
+                    <img src="${x.img}" class="card-img-top" alt="${x.name}">
+                    <div class="card-body">
+                      <h5 class="card-title">${x.name}</h5>
+                      <h6 class="card-title">Industria: ${x.industry}</h6>
+                      <h6 class="card-title">Ciudad y País: ${x.country}</h6>
+                      <p class="card-text">${x.description}</p>
+                    </div>
+                  </div>
+                </div>
+            `;
+        })
+    </script>-->
+
+    <!--let images = document.querySelectorAll('.img-hover');
+        let modal = document.querySelector('.modal');
+        let img = document.querySelector('.imagen');
+        let button = document.querySelector('#btn-modal');
+
+        for(let i = 0; i< images.length i++){
+            images[i].addEventListener('click', function(){
+                modal.idList.toggle("btn-modal");
+            });
+        }-->
+<!--
+    <script type="text/javaScript">
+        const portfolio = [
+            {
+            id: 1,
+            name: "Mi Oficina.co",
+            img: "./images/mioficina.png",
+            url: "https://mioficina.co/",
+            },
+            {
+            id: 2,
+            name: "Pricing Institute",
+            img: "./images/pricing-institute.png",
+            url: "https://pricing.institute/",
+            },
+            {
+            id: 3,
+            name: "MagnoPro",
+            img: "https://www.beetrack.com/hs-fs/hubfs/iStock-912617272.jpg?width=600&name=iStock-912617272.jpg",
+            url: "https://www.magnopro.com.co/",
+            },
+        ];
+
+        let card = document.getElementById("card-template");
+
+        portfolio.map((x) => {
+            card.innerHTML += `
+            <div class="col-portfolio">
+                <a target="_blank" href="${x.url}"><img decoding="async" data-img-show="${x.id}" class="img-hover" src="${x.img}" alt="${x.name}"></a>
+                <div class="box-hover">
+                   <h3>${x.name}</h3>
+                   <label for="btn-modal"><i class="fa-solid fa-magnifying-glass search-glass"></i></label>
+                </div>
+            </div>
+            <input type="checkbox" class="btn-modal" id="btn-modal"></input>
+            <div class="modal">
+                <div class="imagen-modal">
+                    <img decoding="async" class="imagen" id="imagen" src="${x.img}" alt="">
+                    <div class="btn-cerrar">
+                        <label for="btn-modal"><i class="fa fa-times"></i></label>
+                    </div>
+                </div>
+                <label for="btn-modal" class="cerrar-modal"></label>
+            </div>
+            `;
+        })
+
+    </script>-->
+<!--
+<script type="text/javaScript">
+    let images = document.querySelectorAll('.img-hover');
+    let modal = document.querySelector('#modal');
+    let img = document.querySelector('#imagen');
+    let button = document.querySelector('#modalButton');
+    let iconImg = document.querySelector('.search-glass');
+
+    for(let i = 0; i < images.length i++){
+        images[i].addEventListener('click', function selectImg(e){
+            modal.style.display = "flex";
+            let src = e.target.src;
+            img.setAttribute("src", src);
+        });
+    }
+    button.addEventListener('click', function(){
+        modal.style.display = "none";
+    });
+</script>
+
+<script type="text/javaScript">
+    let images = document.querySelectorAll('.img-hover');
+    let modal = document.querySelector('#modal');
+    let img = document.querySelector('#imagen');
+    let button = document.querySelector('#modalButton');
+    let iconImg = document.querySelector('.search-glass');
+
+    function selectImg(reference) {
+        modal.classList.toggle('active');
+        let src = e.target.src;
+        img.setAttribute("src", src);
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+</script>-->
+<!--<script type="text/javaScript">
+    let images = document.querySelectorAll('.img-hover');
+    let modal = document.querySelector('#modal');
+    let imgModal = document.querySelector('#imagen');
+    let button = document.querySelector('#modalButton');
+    let iconImg = document.querySelector('.search-glass');
+
+    imgModal.addEventListener('click', function(event){
+        let img = imgModal.querySelector('img'),
+            tgt = event.target;
+            Array.from(images).forEach(img => {
+                img.addEventListener('click', function selectImg(event){
+                    const imgSelect = event.target.dataset.imgShow;
+                    imgModal.src = imgSelect.img
+                    modal.style.display = "flex";
+                })
+            });
+    });
+    
+</script>
+<script type="text/javaScript">
+    let images = document.querySelectorAll('.img-hover');
+    let modal = document.querySelector('#modal');
+    let imgModal = document.querySelector('#imagen');
+    let button = document.querySelector('#modalButton');
+    let iconImg = document.querySelector('.search-glass');
+    let img = imgModal.querySelector('img'),
+    
+    Array.from(images).forEach(img => {
+                iconImg.addEventListener('click', function event => {
+                    const imgSelect = event.target.dataset.imgShow;
+                    imgModal.src = imgSelect.img
+                    modal.style.display = "flex";
+                })
+        });
+            
+</script>-->
+
+<script type="text/javascript">
+    var select = document.getElementById('category');
+    var todos = document.getElementById('todos');
+    var asesoria = document.getElementById('asesoria');
+    console.log(select.value);
+</script>
+</body>
+</html>
+
+<style type="text/css">
+    #item1, #item2, #item3, #item4{
+        display: none;
+    }
+</style>
+
+<div class="container" max-width="100%">
+    <form action="" class="p-4" id="formDetalle" method="POST">
+        <div class="mb-3">
+            <label class="form-label"></label>
+            <select autofocus="required" class="form-control category" id="category" name="category" onchange="selectProgram();" type="select" style="height: 42px; font-family: 'avenir_lt_std45_book';">
+                <option value="Todos los Programas" data-category="Todos los Programas">Todos los Programas</option>
+                <option value="Certificado en Pricing Essentials" data-category="Certificado en Pricing Essentials">Certificado en Pricing Essentials</option>
+                <option value="Certificado en Value Pricing Strategy" data-category="Certificado en Value Pricing Strategy">Certificado en Value Pricing Strategy</option>
+                <option value="Certificado en Pricing Management Essentials" data-category="Certificado en Pricing Management Essentials">Certificado en Pricing Management Essentials</option>
+                <option value="Certificado en Pricing Leadership Essentials" data-category="Certificado en Pricing Leadership Essentials">Certificado en Pricing Leadership Essentials</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+<div id="container-active">
+    <div class="grid" id="grid">
+        <div class="item" data-category="Certificado en Pricing Essentials">
+            <div class="item-content">
+                [elementor-template id="5956"]
+            </div>
+        </div>
+        <div class="item" data-category="Certificado en Value Pricing Strategy">
+            <div class="item-content">
+                [elementor-template id="5959"]
+            </div>
+        </div>
+        <div class="item" data-category="Certificado en Pricing Essentials">
+            <div class="item-content">
+                <h3>Certificado en Pricing Essentials</h3>
+            </div>
+        </div>
+        <div class="item" data-category="Certificado en Value Pricing Strategy">
+            <div class="item-content">
+                <h3>Certificado en Value Pricing Strategy</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="item1">
+    <div class="grid" id="grid">
+        <div class="item" data-category="Certificado en Pricing Essentials">
+            <div class="item-content">
+                [elementor-template id="5956"]
+            </div>
+        </div>
+    </div>
+</div>
+<div id="item2">
+    <div class="grid" id="grid">
+        <div class="item" data-category="Certificado en Value Pricing Strategy">
+            <div class="item-content">
+                [elementor-template id="5959"]
+            </div>
+        </div>
+    </div>
+</div>
+<div id="item3">
+    <div class="grid" id="grid">
+        <div class="item" data-category="Certificado en Pricing Essentials">
+            <div class="item-content">
+                <h3>Certificado en Pricing Management Essentials</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="item4">
+    <div class="grid" id="grid">
+        <div class="item" data-category="Certificado en Value Pricing Strategy">
+            <div class="item-content">
+                <h3>Certificado en Pricing Leadership Essentials</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function selectProgram(){
+    var category = document.getElementById('category');
+    var containerActive = document.getElementById('container-active');
+    var item1 = document.getElementById('item1');
+    var item2 = document.getElementById('item2');
+    var item3 = document.getElementById('item3');
+    var item4 = document.getElementById('item4');
+    console.log(category.value);    
+    if("Certificado en Pricing Essentials" == category.value) {
+        containerActive.style.display = "none";
+        item1.style.display = "block";
+    }else{
+        containerActive.style.display = "block";
+        item1.style.display = "none";
+    }
+
+    if("Certificado en Value Pricing Strategy" == category.value) {
+        containerActive.style.display = "none";
+        item2.style.display = "block";
+    }else{
+        containerActive.style.display = "block";
+        item2.style.display = "none";
+    }
+
+    if("Certificado en Pricing Management Essentials" == category.value) {
+        containerActive.style.display = "none";
+        item3.style.display = "block";
+    }else{
+        containerActive.style.display = "block";
+        item3.style.display = "none";
+    }
+
+    if("Certificado en Pricing Leadership Essentials" == category.value) {
+        containerActive.style.display = "none";
+        item4.style.display = "block";
+    }else{
+        containerActive.style.display = "block";
+        item4.style.display = "none";
+    }
+
+    if("Todos los Programas" == category.value) {
+        containerActive.style.display = "block";
+    }else{
+        containerActive.style.display = "none";
+    }
+}
+</script>
+
+
+
+<script>
+function selectProgram(){
+    var category = document.getElementById('category');
+    var containerActive = document.getElementById('container-active');
+    console.log(category.value);    
+    if("Certificado en Pricing Essentials" == category.value) {
+        containerActive.style.display = "none";
+        document.getElementById('form-category').innerHTML = `<div class="container-item">
+        <h3>shortcode1</h3>
+    </div>`;
+    }
+
+    if("Certificado en Value Pricing Strategy" == category.value) {
+        containerActive.style.display = "none";
+        document.getElementById('form-category').innerHTML = `<div class="container-item">
+        <h3>shortcode2</h3>
+    </div>`;
+    }
+
+    if("Certificado en Pricing Management Essentials" == category.value) {
+        containerActive.style.display = "none";
+        document.getElementById('form-category').innerHTML = `<div class="container-item">
+        <h3>shortcode3</h3>
+    </div>`;
+    }
+
+    if("Certificado en Pricing Leadership Essentials" == category.value) {
+        containerActive.style.display = "none";
+        document.getElementById('form-category').innerHTML = `<div class="container-item">
+        <h3>shortcode4</h3>
+    </div>`;
+    }
+
+    if("Todos los Programas" == category.value) {
+        containerActive.style.display = "none";
+        document.getElementById('form-category').innerHTML = `<div class="container-item">
+        [elementor-template id="5956"]
+    </div>
+    <div class="container-item">
+        [elementor-template id="5959"]
+    </div>
+    <div class="container-item">
+        <h3>shortcode3</h3>
+    </div>
+    <div class="container-item">
+        <h3>shortcode4</h3>
+    </div>`;
+    }
+}
+</script>
+
+<script>
+    const grid = document.querySelector('grid');
+    const sections = document.querySelectorAll('#category option').value;
+    sections.forEach( (element) => {
+        element.addEventListener('click', (event) => {
+            event.preventDefault();
+            sections.forEach((section) => section.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const category = event.target.innerHTML.toLowerCase();
+            category === 'Todos los Programas' ? grid.filter('[data-category]') : grid.filter(`[data-category="${category}"]`);
+        });
+</script>
+
+
+<div class="grid" id="grid">
+    <div class="item" id="item1" data-category="Certificado en Pricing Essentials">
+        <div class="item-content">
+            [elementor-template id="5956"]
+        </div>
+    </div>
+    <div class="item" id="item2" data-category="Certificado en Value Pricing Strategy">
+        <div class="item-content">
+            [elementor-template id="5959"]
+        </div>
+    </div>
+    <div class="item" id="item3" data-category="Certificado en Pricing Management Essentials">
+        <div class="item-content">
+            <h3>Shortcode-3</h3>
+        </div>
+    </div>
+    <div class="item" id="item4" data-category="Certificado en Pricing Leadership Essentials">
+        <div class="item-content">
+            <h3>Shortcode-4</h3>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function selectProgram(){
+        var category = document.getElementById('category');
+        var item1 = document.getElementById('item1');
+        var item2 = document.getElementById('item2');
+        var item3 = document.getElementById('item3');
+        var item4 = document.getElementById('item4');
+        console.log(category.value);    
+        if("Certificado en Pricing Essentials" == category.value) {
+            item1.style.display = "block";
+            item2.style.display = "none";
+            item2.style.display = "none";
+            item2.style.display = "none";
+        }
+    
+        if("Certificado en Value Pricing Strategy" == category.value) {
+            item1.style.display = "none";
+            item2.style.display = "block";
+            item2.style.display = "none";
+            item2.style.display = "none";
+        }
+    
+        if("Certificado en Pricing Management Essentials" == category.value) {
+            item1.style.display = "none";
+            item2.style.display = "none";
+            item2.style.display = "block";
+            item2.style.display = "none";
+        }
+    
+        if("Certificado en Pricing Leadership Essentials" == category.value) {
+            item1.style.display = "none";
+            item2.style.display = "none";
+            item2.style.display = "none";
+            item2.style.display = "block";
+        }
+    
+        if("Todos los Programas" == category.value) {
+            item1.style.display = "block";
+            item2.style.display = "block";
+            item2.style.display = "block";
+            item2.style.display = "block";
+        }
+    }
+    </script>
+
+https://www.youtube.com/watch?v=HpFyZAY43PA
+https://www.youtube.com/watch?v=s4dzDhnvznE
+
+https://www.youtube.com/watch?v=VIPVwxweznA
+
+
+https://www.youtube.com/watch?v=rm7bOdKaSys
+https://www.youtube.com/watch?v=8mDEnaHaIDw
+
+https://www.youtube.com/watch?v=WYhEv8STTww&t=192s
+
+
+Create images gallery with JavaScript
+https://www.youtube.com/watch?v=l9108YofXJY
+https://www.youtube.com/watch?v=SSPdr2jHtIs
+https://www.youtube.com/watch?v=3vn6JubwmCs
+https://www.youtube.com/watch?v=QghhoJBdw7A&t=29s
+
+
+Cómo crear filtro de categorías con JavaScript
+https://www.youtube.com/watch?v=JY7eV4VMeV0
+https://www.youtube.com/watch?v=42T31laI9Qs&t=2146s
+
+Dark mode and light mode in all web with local storage
+https://www.youtube.com/watch?v=SS0haGSC6vI
