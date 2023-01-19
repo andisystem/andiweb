@@ -77,27 +77,27 @@ document.getElementById("search-icon").addEventListener("click", show_searcher);
 const searching = [
     {
     id: 1,
-    link: "../",
+    link: "../andiweb",
     name: "Index",
     },
     {
     id: 2,
-    link: "../",
+    link: "../andiweb",
     name: "Home",
     },
     {
     id: 3,
-    link: "../",
+    link: "../andiweb",
     name: "Inicio",
     },
     {
     id: 4,
-    link: "../portafolio",
+    link: "../andiweb/portafolio",
     name: "Portafolio",
     },
     {
     id: 5,
-    link: "../contacto",
+    link: "../andiweb/contacto",
     name: "Contacto",
     }
 ];
