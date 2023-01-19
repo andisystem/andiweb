@@ -1,3 +1,9 @@
+/*---- scroll ----*/
+
+html{
+	scroll-behavior: smooth;
+}
+
 /*---- Font ----*/
 
 @font-face {
