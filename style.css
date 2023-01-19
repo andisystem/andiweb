@@ -1333,6 +1333,8 @@ body.dark .about-me .row .col ul li strong{
 .about-me .row .col .container-skills{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
 }
 
 .about-me .row .col .container-skills .skills{
@@ -1340,7 +1342,7 @@ body.dark .about-me .row .col ul li strong{
     height: 100px;
     background: rgba(237,23,111,0.05);
     border-radius: 10px;
-    margin: 0 15px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
