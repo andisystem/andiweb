@@ -262,6 +262,7 @@ function SendFormGoogleSheets() {
     document.elementById("entry.764054735").focus();
     }else{
         if(form=="success") {
+            location.href = "../contacto/sendmail.html";
             swal('Mensaje enviado','Sus datos han sido enviados exitosamente','success');
         } else {
             swal('Error','El mensaje no se pudo enviar. Inténtelo de nuevo','error');
