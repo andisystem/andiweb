@@ -1411,6 +1411,105 @@ body.dark .about-me button:hover{
     margin-left: 10px;
 }
 
+/*---- PROGRESS AND SKILLS ABOUT ME ----*/
+
+.wrapper-progress{
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.wrapper-progress .card{
+    width: calc(20% - 20px);
+    background: #ffffff;
+    height: 300px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 20px;
+    transition: 0.5s ease all;
+}
+
+body.dark .wrapper-progress .card{
+    background: rgba(255, 255, 255, 0.089);
+    transition: 0.5s ease all;
+}
+
+.card .box span,
+.wrapper-progress .card .text{
+    background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.dark .card .box span,
+body.dark .wrapper-progress .card .text{
+    background: -webkit-linear-gradient(left, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card .text{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.container-progress{
+    display: flex;
+    width: 420px;
+    padding: 50px 0;
+    border-radius: 8px;
+    background: #fff;
+    row-gap: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circular-progress{
+    position: relative;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    background: conic-gradient(#3498db 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-progress::before{
+    content: "";
+    position: absolute;
+    height: 135px;
+    width: 135px;
+    border-radius: 50%;
+    background-color: white;
+    transition: 0.5s ease all;
+}
+
+body.dark .circular-progress::before{
+    background-color: rgb(34, 34, 34);
+    transition: 0.5s ease all;
+}
+
+.progress-value{
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    color: #252526;
+}
+
+body.dark .progress-value{
+    color: #ffffff;
+}
+
 /*---- Contact ----*/
 
 .section-form{
@@ -1806,6 +1905,17 @@ footer .social-icon:hover{
         letter-spacing: 1px;
     }
 
+    /*---- PROGRESS AND SKILLS ABOUT ME ----*/
+
+    .wrapper-progress{
+        max-width: 700px;
+    }
+    
+    .wrapper-progress .card{
+        width: calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+
     /*---- Imagen Modal ----*/
 
     .imagen-modal{
@@ -1891,6 +2001,17 @@ footer .social-icon:hover{
         height: 35px;
         line-height: 35px;
         font-size: 14px;
+    }
+
+    /*---- PROGRESS AND SKILLS ABOUT ME ----*/
+
+    .wrapper-progress{
+        max-width: 500px;
+    }
+    
+    .wrapper-progress .card{
+        width: 90%;
+        margin: auto;
     }
 
     /* ---- SelectBox ---- */
