@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+
+    <!-- Link for geting slider of header -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Favicom -->
+
+    <link rel="icon" href="../images/Favicom.png">
+
+    <!-- Link for geting icons with fontawesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <!-- Title Website -->
+
+    <title>Sobre mi | AndiWeb</title>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+</head>
+<body>
+
+    <!-- Header Main Navigation -->
+
+    <header>
+        <div class="header">
+            <div class="navbar">
+                <div class="container-logo">
+                    <a href="../"><img class="logo" src="../images/andiweb-logo.png" alt="AndiWeb"></a>
+                </div>
+                <div class="navbar-menu">
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="../">Inicio</a></li>
+                            <li><a href="../portafolio">Portafolio</a></li>
+                            <li class="selected-li"><a href="../sobre-mi">Acerca de mi</a></li>
+                            <li><a href="../contacto">Contacto</a></li>
+                        </ul>
+                    </nav>
+                    <div class="main-icons">
+                        <button class="dark-mode" id="switch">
+                            <span><img src="../icon/moon-solid.svg" class="moon-icon"></span>
+                            <span><img src="../icon/sun-solid.svg" class="sun-icon"></span>
+                        </button>
+                        <span  class="btn-search" id="btn-search">
+                            <img src="../icon/magnifying-glass-solid.svg" class="search-icon" id="search-icon">
+                        </span>
+                        <input type="checkbox" id="side-menu" class="side-menu" />
+                <label for="side-menu" class="hamb" id="hamb">
+                    <img src="../icon/bars-solid.svg" class="menu-icon" id="menu-icon" onclick="menutoggle()">
+                    <img src="../icon/xmark-solid.svg" class="menu-icon-x" id="menu-icon-x" onclick="menutoggle()">
+                </label>
+                    </div>
+                </div>   
+            </div>
+        </div>
+        <section class="home-me" id="home-me">
+            <div class="container-banner">
+                <div class="container-banner-img">
+                    <img src="../images/andres_rodriguez.png" alt="">
+                </div>
+                <h1>Andrés Rodríguez</h1>
+                <h2>Diseñador Gráfico - Experto en Diseño y Desarrollo Web</h2>
+                <div class="social-media">
+                    <a target="_blank" href="https://web.facebook.com/people/Andr%C3%A9s-Rodr%C3%ADguez/100008156191939/"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a target="_blank" href="https://www.instagram.com/artworldartistico/"><i class="fa-brands fa-instagram"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/andr%C3%A9s-felipe-rodr%C3%ADguez-barbosa-53b4a915a/"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a target="_blank" href="https://www.behance.net/anfelirod8b973"><i class="fa-brands fa-behance"></i></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!---- WhatsApp ---->
+
+    <a class="btn-wsp" target="_blank" href="https://api.whatsapp.com/send?phone=573213900071&amp;text=Buen%20d%C3%ADa%20Andrés,%20solicito%20un%20servicio%20para%20crear%20mi%20página%20web"><i class="fa fa-whatsapp"></i></a>
+
+    <!---- Searcher ---->
+
+    <div id="ctn-bars-search">
+        <input type="text" id="inputSearch" placeholder="¿Qué deseas buscar?">
+    </div>
+
+    <ul id="box-search">
+        <li><a href="../contacto"><i class="fa-solid fa-magnifying-glass"></i>Contacto</a></li>
+        <li><a href="../"><i class="fa-solid fa-magnifying-glass"></i>Home</a></li>
+        <li><a href="../"><i class="fa-solid fa-magnifying-glass"></i>Index</a></li>
+        <li><a href="../"><i class="fa-solid fa-magnifying-glass"></i>Inicio</a></li>
+        <li><a href="../portafolio"><i class="fa-solid fa-magnifying-glass"></i>Portafolio</a></li>
+    </ul>
+
+    <div id="cover-ctn-search"></div>
+
+    <!-- Portfolio -->
+
+    <section id="about-me" class="about-me">
+        <div class="container-section">
+            <h1 class="heading">Sobre mí</h1>
+            <h2></h2>
+            <p><span>Diseñador Gráfico - Experto en Diseño y Desarrollo Web</span></p>
+            <p>Mi trabajo es ofrecer soluciones de branding, diseño y desarrollo de contenidos web con ideas innovadoras para las pequeñas, medianas y grandes empresas de acuerdo a los objetivos de su negocio.</p>
+            <p>Tengo una experiencia y conocimiento que me otorga la seguridad de ofrecer soluciones innovadoras ante sus problemas por lo cual, me destaco por diferenciarme de los demás a través de mi creatividad e innovación.</p>
+            <p>Estoy aquí para ayudarle en lo que necesite para que su negocio o proyecto sea próspero y con mayor reconocimiento hacia sus clientes.</p>
+            <div class="row">
+                <!-- Personal Data -->
+                <div class="col">
+                    <ul>
+                        <li>
+                            <div class="container-section-data">
+                                <div class="section-data"><strong>País:</strong></div>
+                                <div class="section-data">Colombia</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="container-section-data">
+                                <div class="section-data"><strong>Email:</strong></div>
+                                <div class="section-data">anfelirod86@hotmail.com</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="container-section-data">
+                                <div class="section-data"><strong>Idioma:</strong></div>
+                                <div class="section-data">Español (Nativo)<br />Inglés (Básico-intermedio)</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="container-section-data">
+                                <div class="section-data"><strong>Cargo:</strong></div>
+                                <div class="section-data">Diseñador <span>FREELANCE</span></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skills -->
+                <div class="col">
+                    <h2>Habilidades</h2>
+                    <div class="container-skills">
+                        <div class="skills">
+                            <i class="fa-solid fa-pen-nib"></i><span>Diseño Gráfico</span>
+                        </div>
+                        <div class="skills">
+                            <i class="fa-solid fa-code"></i><span>Diseño Web</span>
+                        </div>
+                        <div class="skills">
+                            <i class="fa-solid fa-paintbrush"></i><span>Ilustración Digital</span>
+                        </div>
+                        <div class="skills">
+                            <i class="fa-solid fa-video"></i><span>Edición de videos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a target="_blank" href="CV_Andres_Rodriguez.pdf"><button>Descargar CV<i class="fa-sharp fa-solid fa-download"></i></button></a>
+        </div>
+    </section>
+
+    <!-- Circular Progress Skills -->
+
+    <section class="wrapper-progress">
+        <div class="card">
+            <div class="circular-progress html">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">WordPress</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress css">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">Moodle</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress javascript">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">Drupal</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress html">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">HTML</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress css">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">CSS</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress javascript">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">JavaScript</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress javascript">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">PHP</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress javascript">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">MySQL</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress javascript">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">cPanel</div>
+        </div>
+        <div class="card">
+            <div class="circular-progress javascript">
+                <span class="progress-value">0%</span>
+            </div>
+            <div class="text">Google Ads</div>
+        </div>
+    </section>
+
+    <!-- footer -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <p>Tengo como misión y objetivo ayudar a emprendedores, pequeñas y grandes empresas a diseñar y desarrollar su proyecto de acuerdo a sus objetivos y encontrar soluciones eficientes para su negocio.</p>
+                    <div class="button-contact">
+                        <div><p>Déjeme sus datos y estaré en contacto para responder sus inquietudes o su solicitud.</p></div>
+                        <div><a href="../contacto" class="btn-footer">Contáctame</a></div>
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <a href="../"><img src="../images/andiweb-negative.png" alt="AndiWweb"></a>
+                    <p>Diseño y desarrollo web a su medida.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h4>Sitios de interés</h4>
+                    <ul>
+                        <li><a href="../portafolio">Portafolio</a></li>
+                        <li><a href="../sobre-mi">Acerca de mi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <div class="social-icons-container">
+                        <a target="_blank" href="https://web.facebook.com/people/Andr%C3%A9s-Rodr%C3%ADguez/100008156191939/" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/artworldartistico/" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-instagram"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/andr%C3%A9s-felipe-rodr%C3%ADguez-barbosa-53b4a915a/" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a target="_blank" href="https://www.behance.net/anfelirod8b973" class="social-icon" data-aos="fade-up"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2023 - AndiWeb</p>
+        </div>
+    </footer>
+
+    <!---- Script ---->
+    <!-- Script for geting slider of header -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!------ category librery for filter ------>
+    
+    <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+
+    <!------ Conecting to JavaScript ------>
+
+    <script src="../script.js"></script>
+    <script src="setInterval.js"></script>
+</body>
+</html>
