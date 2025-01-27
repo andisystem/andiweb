@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Producción Audiovisual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="projects.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="pages.js" defer></script>
+    <!-- Favicom -->
+
+    <link rel="icon" href="files/images/logo-digiticol.png">
+</head>
+<style type="text/css">
+    /* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #202124;
+}
+
+/* Título principal */
+header h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #4285F4;
+    color: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+/* Contenido principal */
+.content {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+/* Grids */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    flex: 3;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Grids de artículos */
+.grid-item {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.grid-item img, .grid-item video, .grid-item iframe {
+    width: 100%;
+    border-radius: 8px;
+    transition: 0.5s ease all;
+    height: 67%;
+    object-fit: cover;
+}
+
+.grid-item img:hover {
+    max-width: 100%;
+    border-radius: 8px;
+    transform: scale(1.1);
+}
+
+/* Meta de artículos */
+.meta {
+    font-size: 0.9em;
+    color: #5f6368;
+}
+
+/* Estilos para la sección de comentarios */
+.comments-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f1f3f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+}
+
+form button {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.modal-content img::-webkit-scrollbar {
+    width: 10px;
+    background: #666;
+}
+
+.modal-content img::-webkit-scrollbar-thumb {
+    background: #27aa9d;
+    border-radius: 5px;
+    z-index: 1999;
+}
+
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Adaptabilidad */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sidebar {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*BOTÓN*/
+.btn-cta {
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #005fa3;
+    transform: scale(1.05);
+}
+
+/* Lista con estrellas */
+.star-list {
+    list-style-type: none; /* Quita los puntos de la lista predeterminados */
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.star-list li {
+    position: relative;
+    padding-left: 25px; /* Espacio para el icono de estrella */
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* Agrega el ícono de estrella antes de cada ítem */
+.star-list li::before {
+    content: "★"; /* Símbolo de estrella */
+    position: absolute;
+    left: 0;
+    color: #FFD700; /* Color dorado para la estrella */
+    font-size: 18px; /* Tamaño de la estrella */
+}
+
+/*FILTROS*/
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  
+  select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  
+  .grid-item {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style>
+<body>
+    <div class="filters">
+        <select id="filterCliente">
+          <option value="todos">Todos los clientes</option>
+          <option value="indumuebles">Indumuebles</option>
+          <option value="mioficina-co">Mioficina.co</option>
+          <option value="solutec">Solutec</option>
+        </select>
+      
+        <select id="filterCategoria">
+          <option value="todos">Todas las categorías</option>
+          <option value="industria">Industria</option>
+          <option value="tecnologia">Tecnología</option>
+        </select>
+      
+        <select id="filterFormato">
+          <option value="todos">Todos los videos</option>
+          <option value="motion-graphic">Motion Graphic</option>
+          <option value="reel">Reel</option>
+          <option value="video-comercial">Video Comercial</option>
+          <option value="video-corporativo">Video Corporativo</option>
+          <option value="video-educativo">Video Educativo</option>
+          <option value="video-testimonial">Video Testimonial</option>
+        </select>
+      </div>
+
+    <main class="content">
+        <!-- Mensaje de "sin resultados" -->
+        <div id="noResults" style="display: none; text-align: center; font-size: 18px; margin-top: 20px;">
+            No se ha encontrado en los resultados de búsqueda.
+        </div>
+
+        <!-- Grids de artículos -->
+        <section class="grid-container">
+            <article class="grid-item">
+                <video data-formato="video-comercial" src="https://digiticol.github.io/index/files/images/produccion-audiovisual/produccion-audiovisual-solutec.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Solutec tu Aliado en Soluciones Tecnológicas</h2>
+                <p data-cliente="solutec" class="meta"><b>Cliente:</b> Solutec</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <iframe 
+                    data-formato="video-comercial motion-graphic" 
+                    src="https://www.youtube.com/embed/HFVgAGqc-NM" 
+                    title="TSplus Escritorios Virtuales" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <h2>TSplus Escritorios Virtuales</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <iframe 
+                    data-formato="video-comercial video-corporativo" 
+                    src="https://www.youtube.com/embed/i_7NkIal7y8" 
+                    title="Mi Oficina.co | Nuestras soluciones tecnológicas" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <h2>Mi Oficina.co | Nuestras soluciones tecnológicas</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <div data-formato="video-educativo">
+                    <script src="https://fast.wistia.com/embed/medias/n2didrv649.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_n2didrv649 videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" src="https://fast.wistia.com/embed/medias/n2didrv649/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" /></div>
+                    </div>
+                    </div>
+                    </div>
+                </div> 
+                <h2>Introducción y Definiciones de la Seguridad de la Información</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <div data-formato="video-educativo">
+                    <script src="https://fast.wistia.com/embed/medias/4q41duhgpw.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_4q41duhgpw videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" src="https://fast.wistia.com/embed/medias/4q41duhgpw/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" /></div>
+                    </div>
+                    </div>
+                    </div>
+                </div> 
+                <h2>Introducción y Definiciones de la Seguridad de la Información Segunda Parte</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <div data-formato="video-educativo">
+                    <script src="https://fast.wistia.com/embed/medias/ewqxcwpurx.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_ewqxcwpurx videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" src="https://fast.wistia.com/embed/medias/ewqxcwpurx/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" /></div>
+                    </div>
+                    </div>
+                    </div>
+                </div> 
+                <h2>Seguridad en el correo</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <div data-formato="video-educativo">
+                    <script src="https://fast.wistia.com/embed/medias/3iz00ek1ic.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_3iz00ek1ic videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" src="https://fast.wistia.com/embed/medias/3iz00ek1ic/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" /></div>
+                    </div>
+                    </div>
+                    </div>
+                </div> 
+                <h2>Seguridad en el correo Nivel II</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <div data-formato="video-educativo">
+                    <script src="https://fast.wistia.com/embed/medias/r40p6nl88x.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_r40p6nl88x videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" src="https://fast.wistia.com/embed/medias/r40p6nl88x/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" /></div>
+                    </div>
+                    </div>
+                    </div>
+                </div> 
+                <h2>Seguridad en el correo Nivel III</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <div data-formato="video-educativo">
+                    <script src="https://fast.wistia.com/embed/medias/411dfbx57e.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+                <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                <div class="wistia_embed wistia_async_411dfbx57e videoFoam=true" style="height:100%;position:relative;width:100%">
+                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" src="https://fast.wistia.com/embed/medias/411dfbx57e/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" /></div>
+                </div>
+                </div>
+                </div>
+                </div> 
+                <h2>Software Malicioso</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <div data-formato="video-educativo">
+                    <script src="https://fast.wistia.com/embed/medias/k2y7zy4zwq.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_k2y7zy4zwq videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" src="https://fast.wistia.com/embed/medias/k2y7zy4zwq/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" /></div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div> 
+                <h2>Ingeniería Social</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="reel" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-indumuebles-3.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Proyecto Antes y Después</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="reel video-testimonial" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-testimonios-indumuebles.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Testimonio de Cliente Satisfecho</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="reel" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-indumuebles-1.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Testimonio de Cliente Satisfecho</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <!-- Aquí puedes añadir más artículos -->
+        </section>
+    </main>
+
+    <!-- Modal de imagen -->
+    <!-- Modal de imagen/video -->
+    <div class="modal" id="modal">
+        <span class="modal-close" id="closeModal">&times;</span>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script type="text/javascript">
+        //Projects pages
+        // Abre el modal y muestra la imagen seleccionada
+        // Obtener elementos
+        const modal = document.getElementById("modal");
+        const modalContent = document.getElementById("modalContent");
+        const closeModal = document.getElementById("closeModal");
+
+        // Mostrar modal al hacer clic en una imagen o video
+        document.querySelectorAll(".grid-item img, .grid-item video").forEach(item => {
+            item.addEventListener("click", () => {
+                modal.style.display = "flex";
+                
+                if (item.tagName === "IMG") {
+                    modalContent.innerHTML = `<img src="${item.src}" alt="Imagen ampliada">`;
+                } else if (item.tagName === "VIDEO") {
+                    modalContent.innerHTML = `
+                        <video controls autoplay loop>
+                            <source src="${item.src}" type="video/mp4">
+                            Tu navegador no soporta la reproducción de videos.
+                        </video>
+                    `;
+                }
+            });
+        });
+
+        // Cerrar modal
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+            modalContent.innerHTML = ""; // Limpiar el contenido del modal
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+                modalContent.innerHTML = ""; // Limpiar el contenido del modal
+            }
+        });
+
+        //Filtros para los desplegables
+
+        // Seleccionamos los elementos de los filtros y los artículos
+        const filterCliente = document.getElementById("filterCliente");
+        const filterCategoria = document.getElementById("filterCategoria");
+        const filterFormato = document.getElementById("filterFormato");
+        const articles = document.querySelectorAll(".grid-item");
+        const noResults = document.getElementById("noResults"); // Elemento de "sin resultados"
+
+        // Función para aplicar los filtros
+        function applyFilters() {
+        // Obtener los valores seleccionados
+        const selectedCliente = filterCliente.value;
+        const selectedCategoria = filterCategoria.value;
+        const selectedFormato = filterFormato.value;
+
+        let hasVisibleItems = false; // Variable para rastrear si hay coincidencias visibles
+
+        // Iterar sobre todos los artículos
+        articles.forEach(article => {
+            // Extraer los atributos del artículo
+            const cliente = article.querySelector("[data-cliente]").getAttribute("data-cliente");
+            const categorias = article.querySelector("[data-categoria]").getAttribute("data-categoria").split(" ");
+            const formatos = article.querySelector("[data-formato]").getAttribute("data-formato").split(" ");
+
+            // Verificar si el artículo cumple con los filtros
+            const matchesCliente = selectedCliente === "todos" || cliente === selectedCliente;
+            const matchesCategoria = selectedCategoria === "todos" || categorias.includes(selectedCategoria);
+            const matchesFormato = selectedFormato === "todos" || formatos.includes(selectedFormato);
+
+            // Mostrar u ocultar el artículo según los filtros
+            if (matchesCliente && matchesCategoria && matchesFormato) {
+            article.style.display = ""; // Mostrar
+            hasVisibleItems = true; // Al menos un artículo es visible
+            } else {
+            article.style.display = "none"; // Ocultar
+            }
+        });
+
+        // Mostrar u ocultar el mensaje de "sin resultados"
+        if (hasVisibleItems) {
+            noResults.style.display = "none"; // Ocultar mensaje
+        } else {
+            noResults.style.display = "block"; // Mostrar mensaje
+        }
+        }
+
+        // Añadir eventos de cambio a los selectores
+        filterCliente.addEventListener("change", applyFilters);
+        filterCategoria.addEventListener("change", applyFilters);
+        filterFormato.addEventListener("change", applyFilters);
+
+        // Aplicar los filtros inicialmente
+        applyFilters();
+
+    </script>
+</body>
+</html>
