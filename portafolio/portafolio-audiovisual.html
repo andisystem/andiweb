@@ -260,7 +260,8 @@ form button {
     <div class="filters">
         <select id="filterCliente">
           <option value="todos">Todos los clientes</option>
-          <option value="fabio">Fabio</option>
+          <option value="empresas-y-residencias">Empresas y Residencias</option>
+          <option value="fabio">Fabio Rojas</option>
           <option value="indumuebles">Indumuebles</option>
           <option value="mioficina-co">Mioficina.co</option>
           <option value="solutec">Solutec</option>
@@ -268,6 +269,7 @@ form button {
       
         <select id="filterCategoria">
           <option value="todos">Todas las categorías</option>
+          <option value="agencia">Agencia</option>
           <option value="industria">Industria</option>
           <option value="psicologia">Psicología</option>
           <option value="tecnologia">Tecnología</option>
@@ -292,6 +294,22 @@ form button {
 
         <!-- Grids de artículos -->
         <section class="grid-container">
+            <article class="grid-item">
+                <video data-formato="video-educativo motion-graphic" src="../users-data/Sonic.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Aprende a Dibujar</h2>
+                <p data-cliente="fabio" class="meta"><b>Cliente:</b> Fabio Rojas</p>
+                <p data-categoria="psicologia" class="meta"><b>Categoría:</b> Psicología</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="video-comercial reel" src="../users-data/reel-empresas-y-residencias.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Reel Empresas y Residencias</h2>
+                <p data-cliente="empresas-y-residencias" class="meta"><b>Cliente:</b> Empresas y Residencias</p>
+                <p data-categoria="agencia" class="meta"><b>Categoría:</b> Agencia</p>
+            </article>
             <article class="grid-item">
                 <video data-formato="video-comercial" src="https://digiticol.github.io/index/files/images/produccion-audiovisual/produccion-audiovisual-solutec.mp4" controls muted loop>
                     Tu navegador no soporta la reproducción de videos.
