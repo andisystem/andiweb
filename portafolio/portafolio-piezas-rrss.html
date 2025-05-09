@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Producción Audiovisual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="projects.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="pages.js" defer></script>
+    <!-- Favicom -->
+
+    <link rel="icon" href="files/images/logo-digiticol.png">
+</head>
+<style type="text/css">
+    /* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #202124;
+}
+
+/* Título principal */
+header h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #4285F4;
+    color: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+/* Contenido principal */
+.content {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+/* Grids */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    flex: 3;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Grids de artículos */
+.grid-item {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.grid-item img, .grid-item video, .grid-item iframe {
+    width: 100%;
+    border-radius: 8px;
+    transition: 0.5s ease all;
+    height: 67%;
+    object-fit: cover;
+}
+
+.grid-item img:hover {
+    max-width: 100%;
+    border-radius: 8px;
+    transform: scale(1.1);
+}
+
+/* Meta de artículos */
+.meta {
+    font-size: 0.9em;
+    color: #5f6368;
+}
+
+/* Estilos para la sección de comentarios */
+.comments-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f1f3f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+}
+
+form button {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.modal-content img::-webkit-scrollbar {
+    width: 10px;
+    background: #666;
+}
+
+.modal-content img::-webkit-scrollbar-thumb {
+    background: #27aa9d;
+    border-radius: 5px;
+    z-index: 1999;
+}
+
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Adaptabilidad */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sidebar {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*BOTÓN*/
+.btn-cta {
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #005fa3;
+    transform: scale(1.05);
+}
+
+/* Lista con estrellas */
+.star-list {
+    list-style-type: none; /* Quita los puntos de la lista predeterminados */
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.star-list li {
+    position: relative;
+    padding-left: 25px; /* Espacio para el icono de estrella */
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* Agrega el ícono de estrella antes de cada ítem */
+.star-list li::before {
+    content: "★"; /* Símbolo de estrella */
+    position: absolute;
+    left: 0;
+    color: #FFD700; /* Color dorado para la estrella */
+    font-size: 18px; /* Tamaño de la estrella */
+}
+
+/*FILTROS*/
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  
+  select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  
+  .grid-item {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style>
+<body>
+    <header>
+        <h1>Diseño de Piezas RRSS</h1>
+    </header>
+
+    <div class="filters">
+        <select id="filterCliente">
+          <option value="todos">Todos los clientes</option>
+          <option value="amway">Amway</option>
+          <option value="camcomputo">CamCómputo</option>
+          <option value="empresas-y-residencias">Empresas y Residencias</option>
+          <option value="indumuebles">Indumuebles</option>
+          <option value="kores-colombia">Kores Colombia</option>
+          <option value="maped">Maped</option>
+          <option value="meicys">Meicys</option>
+          <option value="mioficina-co">Mioficina.co</option>
+          <option value="osaka-electronics">Osaka Electronics</option>
+          <option value="vizio-expert">Vizio Expert</option>
+        </select>
+      
+        <select id="filterCategoria">
+          <option value="todos">Todas las categorías</option>
+          <option value="agencia">Agencia</option>
+          <option value="aseo-y-hogar">Aseo y Hogar</option>
+          <option value="cosmeticos-y-belleza">Cosméticos y Belleza</option>
+          <option value="electronica">Electrónica</option>
+          <option value="industria">Industria</option>
+          <option value="papeleria">Papelería</option>
+          <option value="tecnologia">Tecnología</option>
+        </select>
+      
+        <select id="filterFormato">
+          <option value="todos">Todos los formatos</option>
+          <option value="gif">GIF</option>
+          <option value="post">Post</option>
+          <option value="reel">Reel</option>
+          <option value="story">Story</option>
+        </select>
+      </div>
+
+    <main class="content">
+        <!-- Mensaje de "sin resultados" -->
+        <div id="noResults" style="display: none; text-align: center; font-size: 18px; margin-top: 20px;">
+            No se ha encontrado en los resultados de búsqueda.
+        </div>
+
+        <!-- Grids de artículos -->
+        <section class="grid-container">
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-1.gif" alt="Diseño de Piezas RRSS Kores Colombia Gif Barra Adhesiva Kores">
+                <h2>Gif Barra Adhesiva Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-2.gif" alt="Diseño de Piezas RRSS Kores Colombia Gif Borrador KE20 Negro Kores">
+                <h2>Gif Borrador KE20 Negro Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-3.gif" alt="Diseño de Piezas RRSS Kores Colombia Gif Elabora tu Personaje Favorito">
+                <h2>Gif Elabora tu Personaje Favorito</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-4.gif" alt="Diseño de Piezas RRSS Kores Colombia Gif Día de los Inocentes">
+                <h2>Gif Día de los Inocentes</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-5.gif" alt="Diseño de Piezas RRSS Kores Interacción Colores Kores">
+                <h2>Gif Interacción Colores Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-6.gif" alt="Diseño de Piezas RRSS Kores App Kores Coach">
+                <h2>Gif App Kores Coach</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-7.gif" alt="Diseño de Piezas RRSS Kores Lápices Kores">
+                <h2>Gif Lápices Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-8.gif" alt="Diseño de Piezas RRSS Kores Masikolor Kores">
+                <h2>Gif Masikolor Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-9.gif" alt="Diseño de Piezas RRSS Kores Visítanos en Bogotá Kores">
+                <h2>Gif Visítanos en Bogotá Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/gif-kores-10.gif" alt="Diseño de Piezas RRSS Kores Pegamento Korfix">
+                <h2>Gif Pegamento Korfix</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kit-de-aseo-amway.jpeg" alt="Diseño de Piezas RRSS Post Kit de Aseo Amway 1">
+                <h2>Post Kit de Aseo Amway 1</h2>
+                <p data-cliente="amway" class="meta"><b>Cliente:</b> Amway</p>
+                <p data-categoria="aseo-y-hogar" class="meta"><b>Categoría:</b> Aseo y Hogar</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kit-de-aseo-amway-2.png" alt="Diseño de Piezas RRSS Post Kit de Aseo Amway 2">
+                <h2>Post Kit de Aseo Amway 2</h2>
+                <p data-cliente="amway" class="meta"><b>Cliente:</b> Amway</p>
+                <p data-categoria="aseo-y-hogar" class="meta"><b>Categoría:</b> Aseo y Hogar</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-1.gif" alt="Diseño de Piezas RRSS Kores Gif Día de los Inocentes Kores">
+                <h2>Gif Día de los Inocentes Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-2.jpeg" alt="Diseño de Piezas RRSS Kores Post Facebook Live Viaje a Cuba">
+                <h2>Post Facebook Live Viaje a Cuba</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-3.jpeg" alt="Diseño de Piezas RRSS Kores Post Akuarellos Kores">
+                <h2>Post Akuarellos Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-4.jpeg" alt="Diseño de Piezas RRSS Kores Post Akuarellos Kores">
+                <h2>Post Akuarellos Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-5.jpeg" alt="Diseño de Piezas RRSS Kores Post Corrector Scooter Kores">
+                <h2>Post Corrector Scooter Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-6.jpeg" alt="Diseño de Piezas RRSS Kores Post Akuarellos Kores">
+                <h2>Post Akuarellos Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-7.jpeg" alt="Diseño de Piezas RRSS Kores Post Participación Feria del Libro">
+                <h2>Post Participación Feria del Libro</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-8.jpeg" alt="Diseño de Piezas RRSS Kores Post Creatividad Kores">
+                <h2>Post Creatividad Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-9.jpeg" alt="Diseño de Piezas RRSS Kores Post Pegamento Power Glue">
+                <h2>Post Pegamento Power Glue</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-10.jpeg" alt="Diseño de Piezas RRSS Kores Plumones Korello">
+                <h2>Post Plumones Korello</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-11.jpeg" alt="Diseño de Piezas RRSS Kores Masikolor Kores">
+                <h2>Post Masikolor Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-kores-12.jpeg" alt="Diseño de Piezas RRSS Kores Creatividad Kores">
+                <h2>Post Creatividad Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-laptop-asus-camcomputo.png" alt="Diseño de Piezas RRSS Laptop X415J - EK2361 CamCómputo">
+                <h2>Post Laptop X415J - EK2361</h2>
+                <p data-cliente="camcomputo" class="meta"><b>Cliente:</b> CamCómputo</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-maped-1.jpeg" alt="Diseño de Piezas RRSS Maped Borrador Pirámide Tatoo">
+                <h2>Post Borrador Pirámide Tatoo</h2>
+                <p data-cliente="maped" class="meta"><b>Cliente:</b> Maped</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-maped-2.jpeg" alt="Diseño de Piezas RRSS Maped Regla Study 15 cm">
+                <h2>Post Regla Study 15 cm</h2>
+                <p data-cliente="maped" class="meta"><b>Cliente:</b> Maped</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-maped-3.jpeg" alt="Diseño de Piezas RRSS Maped Post Es Genial Es Maped">
+                <h2>Post Es Genial Es Maped</h2>
+                <p data-cliente="maped" class="meta"><b>Cliente:</b> Maped</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-maped-4.jpeg" alt="Diseño de Piezas RRSS Maped Tijeras Zenoa Fit">
+                <h2>Post Tijeras Zenoa Fit</h2>
+                <p data-cliente="maped" class="meta"><b>Cliente:</b> Maped</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-maped-5.jpeg" alt="Diseño de Piezas RRSS Maped Tajalápiz Croc Croc">
+                <h2>Post Tajalápiz Croc Croc</h2>
+                <p data-cliente="maped" class="meta"><b>Cliente:</b> Maped</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-maped-6.jpeg" alt="Diseño de Piezas RRSS Maped Post Bisturí Plástico Maped">
+                <h2>Post Bisturí Plástico Maped</h2>
+                <p data-cliente="maped" class="meta"><b>Cliente:</b> Maped</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-1.jpeg" alt="Diseño de Piezas RRSS Removedor de Color Meicys">
+                <h2>Post Removedor de Color Meicys</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-2.jpeg" alt="Diseño de Piezas RRSS Splash Amor Romántico Meicys">
+                <h2>Post Splash Amor Romántico</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-3.jpeg" alt="Diseño de Piezas RRSS Shampoo Vitam Keratina Meicys">
+                <h2>Post Shampoo Vitam Keratina</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-4.jpeg" alt="Diseño de Piezas RRSS Shampoo Vitam Flexibilidad Meicys">
+                <h2>Post Shampoo Vitam Flexibilidad</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-5.jpeg" alt="Diseño de Piezas RRSS Vitan Shampoo Meicys">
+                <h2>Post Vitan Shampoo Meicys</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-6.jpeg" alt="Diseño de Piezas RRSS Alisador de Pelo Keraton Meicys">
+                <h2>Post Alisador de Pelo Keraton</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-7.jpeg" alt="Diseño de Piezas RRSS Vitan Shampoo Meicys">
+                <h2>Post Vitan Shampoo Meicys</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-8.jpeg" alt="Diseño de Piezas RRSS Fluido Capilar Meicys">
+                <h2>Post Fluido Capilar</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-meicys-9.jpeg" alt="Diseño de Piezas RRSS Tinte de Color Meicys">
+                <h2>Post Tinte de Color Meicys</h2>
+                <p data-cliente="meicys" class="meta"><b>Cliente:</b> Meicys</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-mioficina-1.jpeg" alt="Diseño de Piezas RRSS Continuidad del Negocio Mioficina.co">
+                <h2>Post Continuidad del Negocio</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-mioficina-2.jpeg" alt="Diseño de Piezas RRSS Campaña de Seguridad de la Información Mioficina.co">
+                <h2>Post Campaña de Seguridad de la Información</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-mioficina-3.jpeg" alt="Diseño de Piezas RRSS Conta Pyme Cloud Mioficina.co">
+                <h2>Post Conta Pyme Cloud</h2>
+                <p data-cliente="mioficina-co" class="meta"><b>Cliente:</b> Mioficina.co</p>
+                <p data-categoria="tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-osaka-electronics-1.jpeg" alt="Diseño de Piezas RRSS Panel Solar Osaka Electronics">
+                <h2>Post Panel Solar</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-osaka-electronics-2.jpeg" alt="Diseño de Piezas RRSS Decodificador para TV Digital Osaka Electronics">
+                <h2>Post Decodificador para TV Digital</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-osaka-electronics-3.jpeg" alt="Diseño de Piezas RRSS Páneles de Energía Solar Osaka Electronics">
+                <h2>Post Páneles de Energía Solar</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-osaka-electronics-4.jpeg" alt="Diseño de Piezas RRSS Robótica Osaka Electronics">
+                <h2>Post Robótica Osaka Electronics</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-osaka-electronics-5.jpeg" alt="Diseño de Piezas RRSS Baterías Recargables Energizer Osaka Electronics">
+                <h2>Post Baterías Recargables Energizer</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-osaka-electronics-6.jpeg" alt="Diseño de Piezas RRSS Osciloscopio Digital Osaka Electronics">
+                <h2>Post Osciloscopio Digital</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-PC-HP-AIO-G4-camcomputo.png" alt="Diseño de Piezas RRSS Computador Hp Aio 200 G4 Ci5 CamCómputo">
+                <h2>Computador Hp Aio 200 G4 Ci5</h2>
+                <p data-cliente="camcomputo" class="meta"><b>Cliente:</b> CamCómputo</p>
+                <p data-categoria="tecnologia tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-PC-Lenovo-ThinkCentre-camcomputo.png" alt="Diseño de Piezas RRSS PC Lenovo ThinkCentre CamCómputo">
+                <h2>PC Lenovo ThinkCentre</h2>
+                <p data-cliente="camcomputo" class="meta"><b>Cliente:</b> CamCómputo</p>
+                <p data-categoria="tecnologia tecnologia" class="meta"><b>Categoría:</b> Tecnología</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-1.jpeg" alt="Diseño de Piezas RRSS Vizio Reflex Vizio Expert">
+                <h2>Vizio Reflex</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-2.jpeg" alt="Diseño de Piezas RRSS Tip del Día Vizio Expert">
+                <h2>Tip del Día</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-3.jpeg" alt="Diseño de Piezas RRSS Shampoo Vizio sin Sal Vizio Expert">
+                <h2>Shampoo Vizio sin Sal</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-4.jpeg" alt="Diseño de Piezas RRSS Guajira Vizio Expert">
+                <h2>Guajira</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-5.jpeg" alt="Diseño de Piezas RRSS Tono 34 Vizio Expert">
+                <h2>Tono 34</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-6.jpeg" alt="Diseño de Piezas RRSS Tono 44 Vizio Expert">
+                <h2>Tono 44</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-7.jpeg" alt="Diseño de Piezas RRSS Aceite de Argán Vizio Expert">
+                <h2>Aceite de Argán</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-8.jpeg" alt="Diseño de Piezas RRSS Vizio Oil Spa Vizio Expert">
+                <h2>Vizio Oil Spa</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-9.jpeg" alt="Diseño de Piezas RRSS Bloqueador Solar Guajira Vizio Expert">
+                <h2>Bloqueador Solar Guajira</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-10.jpeg" alt="Diseño de Piezas RRSS Tratamiento Hidratante Revitalizante Crece Pelo Vizio Expert">
+                <h2>Tratamiento Hidratante Revitalizante Crece Pelo</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-vizio-expert-12.jpeg" alt="Diseño de Piezas RRSS Guajira Vizio Expert">
+                <h2>Guajira</h2>
+                <p data-cliente="vizio-expert" class="meta"><b>Cliente:</b> Vizio Expert</p>
+                <p data-categoria="cosmeticos-y-belleza" class="meta"><b>Categoría:</b> Cosméticos y Belleza</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="post" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Post/post-convocatoria-indumuebles.png" alt="Diseño de Piezas RRSS Convocatoria Indumuebles">
+                <h2>Post Convocatoria</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="reel" src="https://andisystem.github.io/users-data/reel-empresas-y-residencias.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Reel Empresas y Residencias</h2>
+                <p data-cliente="empresas-y-residencias" class="meta"><b>Cliente:</b> Empresas y Residencias</p>
+                <p data-categoria="agencia" class="meta"><b>Categoría:</b> Agencia</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="reel" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-indumuebles-1.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Reel detrás de cada diseño excepcional</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="story" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-indumuebles-2.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Story Silla Winner Presidente</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="story reel" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-indumuebles-3.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Proyecto Antes y Después</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <article class="grid-item">
+                <video data-formato="reel" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-testimonios-indumuebles.mp4" controls muted loop>
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+                <h2>Testimonio de Cliente Satisfecho</h2>
+                <p data-cliente="indumuebles" class="meta"><b>Cliente:</b> Indumuebles</p>
+                <p data-categoria="industria" class="meta"><b>Categoría:</b> Industria</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-kores-1.gif" alt="Diseño de Piezas RRSS Story Día del Amor y Amistad Kores Colombia">
+                <h2>Story Día del Amor y Amistad</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-kores-2.gif" alt="Diseño de Piezas RRSS Story Mes Naranja del Año Kores Colombia">
+                <h2>Story Mes Naranja del Año</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-kores-3.gif" alt="Diseño de Piezas RRSS Story Story Interactivo Kores Colombia">
+                <h2>Story Interactivo</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-kores-4.gif" alt="Diseño de Piezas RRSS Story Krea con Kores Kores Colombia">
+                <h2>Story Krea con Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-kores-5.gif" alt="Diseño de Piezas RRSS Story Manualidades Kores Kores Colombia">
+                <h2>Story Manualidades Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-kores-6.gif" alt="Diseño de Piezas RRSS Story Expectativa Gánate un Premio con Kores Kores Colombia">
+                <h2>Story Expectativa Gánate un Premio con Kores</h2>
+                <p data-cliente="kores-colombia" class="meta"><b>Cliente:</b> Kores Colombia</p>
+                <p data-categoria="papeleria" class="meta"><b>Categoría:</b> Papelería</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-osaka-electronics-1.gif" alt="Diseño de Piezas RRSS Story Accesorios de Electrónica Osaka Electronics">
+                <h2>Story Accesorios de Electrónica</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-osaka-electronics-2.gif" alt="Diseño de Piezas RRSS Story Frase Motivacional Osaka Electronics">
+                <h2>Story Frase Motivacional</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <article class="grid-item">
+                <img data-formato="story gif" src="https://digiticol.github.io/index/files/images/diseno-de-piezas-rrss/Reels/reel-osaka-electronics-3.gif" alt="Diseño de Piezas RRSS Story Interactivo Osaka Electronics">
+                <h2>Story Interactivo</h2>
+                <p data-cliente="osaka-electronics" class="meta"><b>Cliente:</b> Osaka Electronics</p>
+                <p data-categoria="electronica tecnologia" class="meta"><b>Categoría:</b> Electrónica</p>
+            </article>
+            <!-- Aquí puedes añadir más artículos -->
+        </section>
+    </main>
+
+    <!-- Modal de imagen -->
+    <!-- Modal de imagen/video -->
+    <div class="modal" id="modal">
+        <span class="modal-close" id="closeModal">&times;</span>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script type="text/javascript">
+        //Projects pages
+        // Abre el modal y muestra la imagen seleccionada
+        // Obtener elementos
+        const modal = document.getElementById("modal");
+        const modalContent = document.getElementById("modalContent");
+        const closeModal = document.getElementById("closeModal");
+
+        // Mostrar modal al hacer clic en una imagen o video
+        document.querySelectorAll(".grid-item img, .grid-item video").forEach(item => {
+            item.addEventListener("click", () => {
+                modal.style.display = "flex";
+                
+                if (item.tagName === "IMG") {
+                    modalContent.innerHTML = `<img src="${item.src}" alt="Imagen ampliada">`;
+                } else if (item.tagName === "VIDEO") {
+                    modalContent.innerHTML = `
+                        <video controls autoplay loop>
+                            <source src="${item.src}" type="video/mp4">
+                            Tu navegador no soporta la reproducción de videos.
+                        </video>
+                    `;
+                }
+            });
+        });
+
+        // Cerrar modal
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+            modalContent.innerHTML = ""; // Limpiar el contenido del modal
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+                modalContent.innerHTML = ""; // Limpiar el contenido del modal
+            }
+        });
+
+        //Filtros para los desplegables
+
+        // Seleccionamos los elementos de los filtros y los artículos
+        const filterCliente = document.getElementById("filterCliente");
+        const filterCategoria = document.getElementById("filterCategoria");
+        const filterFormato = document.getElementById("filterFormato");
+        const articles = document.querySelectorAll(".grid-item");
+        const noResults = document.getElementById("noResults"); // Elemento de "sin resultados"
+
+        // Función para aplicar los filtros
+        function applyFilters() {
+        // Obtener los valores seleccionados
+        const selectedCliente = filterCliente.value;
+        const selectedCategoria = filterCategoria.value;
+        const selectedFormato = filterFormato.value;
+
+        let hasVisibleItems = false; // Variable para rastrear si hay coincidencias visibles
+
+        // Iterar sobre todos los artículos
+        articles.forEach(article => {
+            // Extraer los atributos del artículo
+            const cliente = article.querySelector("[data-cliente]").getAttribute("data-cliente");
+            const categorias = article.querySelector("[data-categoria]").getAttribute("data-categoria").split(" ");
+            const formatos = article.querySelector("[data-formato]").getAttribute("data-formato").split(" ");
+
+            // Verificar si el artículo cumple con los filtros
+            const matchesCliente = selectedCliente === "todos" || cliente === selectedCliente;
+            const matchesCategoria = selectedCategoria === "todos" || categorias.includes(selectedCategoria);
+            const matchesFormato = selectedFormato === "todos" || formatos.includes(selectedFormato);
+
+            // Mostrar u ocultar el artículo según los filtros
+            if (matchesCliente && matchesCategoria && matchesFormato) {
+            article.style.display = ""; // Mostrar
+            hasVisibleItems = true; // Al menos un artículo es visible
+            } else {
+            article.style.display = "none"; // Ocultar
+            }
+        });
+
+        // Mostrar u ocultar el mensaje de "sin resultados"
+        if (hasVisibleItems) {
+            noResults.style.display = "none"; // Ocultar mensaje
+        } else {
+            noResults.style.display = "block"; // Mostrar mensaje
+        }
+        }
+
+        // Añadir eventos de cambio a los selectores
+        filterCliente.addEventListener("change", applyFilters);
+        filterCategoria.addEventListener("change", applyFilters);
+        filterFormato.addEventListener("change", applyFilters);
+
+        // Aplicar los filtros inicialmente
+        applyFilters();
+
+    </script>
+</body>
+</html>
